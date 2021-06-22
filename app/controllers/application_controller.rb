@@ -41,8 +41,11 @@ class ApplicationController < Sinatra::Base
   # params is a hash that is the body of our fetch!!!!
   # this is assuming we had a post request with a body of {name: someName, weight: someWeight}
   post "/cats" do 
-    binding.pry
-    Cat.create(name: params[:name], weight: params[:weight])
+    # params is the hash of information coming from the body of the Request
+      # Through use of params, we enter the DB
+    # Cat.create(name: params[:name], weight: params[:weight])
+    Cat.create(params.slice[:name, :weight])
+    cat.to_json
   end
 
 
