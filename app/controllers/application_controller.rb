@@ -66,7 +66,7 @@ class ApplicationController < Sinatra::Base
   delete "/workouts/:id" do
     # Dynamic URL, that :id up there is available in our params w/ the key of 'id'
     workout =  Workout.find(params[:id])
-    workout.destroy_all
+    workout.destroy
 
     workout.to_json
   end
