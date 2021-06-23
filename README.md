@@ -51,3 +51,57 @@ fetch("http://localhost:9393/test")
 ```
 
 [create-react-app]: https://create-react-app.dev/docs/getting-started
+
+
+```js
+   import {Switch, Route, withRouter} from 'react-router-dom'
+
+
+   decideWhichWorkoutToRender = (routerProps) =>{
+      //the return value of this callback is waht is to be rendered
+      let foundWorkout = this.state.workouts.find(workout=>{
+         return workout.id === parseInt(routerProps.match.params.id)
+      })
+
+      if(foundWorkout){
+         return <Workout workout={foundWorkout}>
+      }else{
+         return <p> No Course Found </p>
+      }
+   } 
+
+   <Switch>
+      <Route path="/login">
+         <LoginForm>
+      </Route>
+      <Route path="/workouts">
+         <LoginForm>
+      </Route>
+
+      //a bit advanced
+      //render takes in a callback, note it's self closing
+      <Route path="/workouts/:id" render={this.decideWhichWorkoutToRender}/>
+
+   <Switch>
+
+
+   // Changing the URL (this is in state)
+   this.props.history.push(/workouts)
+   //
+
+
+   export default withRouter(App)
+
+```
+
+
+
+```js
+//inside our workout component
+
+import {Link} from 'react-router-dom'
+
+   <Link to={`/exercises/${this.props.exercise.id}`}>
+
+
+```
