@@ -18,4 +18,18 @@ class ApplicationController < Sinatra::Base
     
   # end
 
+  # BODY OF FETCH BECOMES THE KEYS IN PARAMS
+
+  get "/users" do 
+    # User.all.to_json(include: [:workouts, :exercises])
+
+    User.all.to_json(
+      include: {workouts: {include: :exercises}}, 
+      methods: [:professor_name]
+    )
+  end
+
+  #methods is a way to return the return value of a method
+
+
 end
