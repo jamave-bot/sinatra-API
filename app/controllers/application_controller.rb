@@ -32,4 +32,34 @@ class ApplicationController < Sinatra::Base
   #methods is a way to return the return value of a method
 
 
+
+  # React frontend makes the fetch request
+  # go back here do a binding.pry to make sure we're getting the info
+  # write the code within the block, figure out the response we want to send back
+
+
+  #We're going to treat our state as our User POJO
+  #   e.g. 
+  #   state = {
+  #   id: 0, 
+  #   name: "",
+  #   password: "",
+  #   age: 0, 
+  #   height: 0,
+  #   weight: 0,
+  #   bodyfat: 0.0, 
+  #   workouts: []
+  # }
+
+  post "/login" do
+    # user = User.find_by(name: params[:username], password: params[:password])
+    user = User.find_by(params.slice(:name, :password))
+
+    if user
+      user.to_json(include: {workouts: {include: :exercises}})
+    else
+      {error: "Incorrect username or password"}
+    end
+  end
+
 end

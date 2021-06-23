@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_23_134036) do
+ActiveRecord::Schema.define(version: 2021_06_23_152913) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_06_23_134036) do
     t.string "height"
     t.integer "weight"
     t.float "bodyfat"
+    t.string "password"
   end
 
   create_table "workouts", force: :cascade do |t|
