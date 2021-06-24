@@ -54,11 +54,12 @@ class ApplicationController < Sinatra::Base
   post "/login" do
     # user = User.find_by(name: params[:username], password: params[:password])
     user = User.find_by(params.slice(:name, :password))
-
     if user
+      puts "found them"
       user.to_json(include: {workouts: {include: :exercises}})
     else
-      {error: "Incorrect username or password"}
+      puts "didn't find them"
+      return {error: "Incorrect username or password"}.to_json
     end
   end
 
@@ -69,6 +70,24 @@ class ApplicationController < Sinatra::Base
     workout.destroy
 
     workout.to_json
+  end
+
+  post "/workouts" do 
+    newWorkout = Workout.create(name: params[:name], body_part: params[:body_part], user_id: params[:user_id])
+    newWorkout.to_json
+  end
+
+  post "/exercises" do 
+    newExercise = Exercise.create(
+      name: params[:name],
+      workout_id: params[:workout_id],
+      sets: params[:sets],
+      reps: params[:reps],
+      duration: params[:duration],
+      calories_burned: params[:calories_burned],
+      weight: params[:weight]
+    )
+    newExercise.to_json
   end
 
 
