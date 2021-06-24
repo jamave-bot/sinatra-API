@@ -90,6 +90,23 @@ class ApplicationController < Sinatra::Base
     newExercise.to_json
   end
 
+  post "/users" do 
+    binding.pry
+
+
+    # new_user = User.create(name: params[:name], age: params[:age], height: params[:height], weight: params[:weight],bodyfat: params[:bodyfat], password:params[:password])
+    # new_user.to_json
+  end
+
+  
+
+
+
+
+
+
+
+
 
 end
 
