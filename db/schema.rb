@@ -15,19 +15,19 @@ ActiveRecord::Schema.define(version: 2021_06_23_152913) do
   create_table "exercises", force: :cascade do |t|
     t.string "name", null: false
     t.integer "workout_id"
-    t.integer "sets"
-    t.integer "reps"
-    t.integer "duration"
-    t.integer "calories_burned"
-    t.integer "weight"
+    t.string "sets"
+    t.string "reps"
+    t.string "duration"
+    t.string "calories_burned"
+    t.string "weight"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "age"
+    t.string "age"
     t.string "height"
-    t.integer "weight"
-    t.float "bodyfat"
+    t.string "weight"
+    t.string "bodyfat"
     t.string "password"
   end
 

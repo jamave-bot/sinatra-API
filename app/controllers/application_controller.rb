@@ -24,8 +24,7 @@ class ApplicationController < Sinatra::Base
     # User.all.to_json(include: [:workouts, :exercises])
 
     User.all.to_json(
-      include: {workouts: {include: :exercises}}, 
-      methods: [:professor_name]
+      include: {workouts: {include: :exercises}}
     )
   end
 

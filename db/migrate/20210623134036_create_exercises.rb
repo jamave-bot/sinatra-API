@@ -3,11 +3,11 @@ class CreateExercises < ActiveRecord::Migration[5.2]
     create_table :exercises do |t|
       t.string :name, null: false
       t.integer :workout_id
-      t.integer :sets
-      t.integer :reps
-      t.integer :duration
-      t.integer :calories_burned
-      t.integer :weight
+      t.string :sets
+      t.string :reps
+      t.string :duration
+      t.string :calories_burned
+      t.string :weight
     end
   end
 end
