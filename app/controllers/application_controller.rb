@@ -24,8 +24,8 @@ class ApplicationController < Sinatra::Base
     # User.all.to_json(include: [:workouts, :exercises])
 
     User.all.to_json(
-      include: {workouts: {include: :exercises}}, 
-      methods: [:professor_name]
+      include: {workouts: {include: :exercises}} 
+     
     )
   end
 
@@ -91,11 +91,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/users" do 
-    binding.pry
-
-
-    # new_user = User.create(name: params[:name], age: params[:age], height: params[:height], weight: params[:weight],bodyfat: params[:bodyfat], password:params[:password])
-    # new_user.to_json
+    
+    new_user = User.create(name: params[:name], age: params[:age], height: params[:height], weight: params[:weight],bodyfat: params[:bodyfat], password:params[:password])
+    new_user.to_json
   end
 
   
