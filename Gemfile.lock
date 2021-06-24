@@ -48,6 +48,8 @@ GEM
     minitest (5.14.4)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    nokogiri (1.11.7-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.1)
@@ -116,6 +118,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -137,4 +140,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   2.2.16
+   2.2.19
