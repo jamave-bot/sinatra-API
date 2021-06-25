@@ -90,22 +90,20 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/users" do 
-    binding.pry
-
-
-    # new_user = User.create(name: params[:name], age: params[:age], height: params[:height], weight: params[:weight],bodyfat: params[:bodyfat], password:params[:password])
-    # new_user.to_json
+    new_user = User.create(name: params[:name], age: params[:age], height: params[:height], weight: params[:weight],bodyfat: params[:bodyfat], password:params[:password])
+    new_user.to_json
   end
 
-  
+  get "/workouts/:id" do 
+    # Dynamic URL, that :id up there is available in our params w/ the key of 'id'
+    workout =  Workout.find(params[:id])
+    workout.to_json
+  end
 
-
-
-
-
-
-
-
+  get "/workouts/:id/recent" do
+    user = User.find(params[:id])
+    user.workouts.order('created_at desc').to_json
+  end
 
 end
 
